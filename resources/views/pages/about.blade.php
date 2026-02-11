@@ -33,13 +33,13 @@
                     </h2>
                     <div class="space-y-4 text-gray-600">
                         <p>
-                            <strong class="text-gray-900">Happy Shop</strong> didirikan dengan satu misi sederhana: membawa kebahagiaan ke setiap rumah melalui mainan yang aman, edukatif, dan menyenangkan.
+                            <strong class="text-gray-900">Happy Shop</strong> hadir di brebes tgl 6 januari 2016, dan Alhamdulillah sampai saat ini masih memenuhi pelanggan kami untuk yang memerlukan pernak pernik Ultah, mainan anak, boneka, aneka buket dan asesoris lainnya
                         </p>
                         <p>
-                            Berawal dari kecintaan kami terhadap dunia anak-anak, kami memahami bahwa bermain adalah cara belajar yang paling alami bagi anak. Karena itulah, kami selalu memilih mainan yang tidak hanya menghibur, tetapi juga mendukung perkembangan kognitif, motorik, dan sosial anak.
+                            Alhamdulillah, hingga saat ini Happy Shop tetap dipercaya oleh pelanggan setia kami. Kami terus berusaha memenuhi kebutuhan berbagai pernak-pernik ulang tahun, mulai dari dekorasi, balon, lilin, hingga perlengkapan pesta lainnya. Selain itu, kami juga menyediakan beragam mainan anak, boneka lucu, aneka buket untuk berbagai momen spesial, serta aksesori menarik lainnya.
                         </p>
                         <p>
-                            Dengan pengalaman bertahun-tahun di industri mainan, kami telah membangun hubungan dengan berbagai produsen mainan terpercaya, baik lokal maupun internasional, untuk memastikan setiap produk yang kami tawarkan memenuhi standar keamanan tertinggi.
+                            Dengan pelayanan yang ramah dan koleksi produk yang selalu diperbarui mengikuti tren, Happy Shop siap menjadi pilihan utama Anda untuk melengkapi setiap momen bahagia bersama keluarga dan orang-orang tercinta.
                         </p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Visi Kami</h3>
                     <p class="text-gray-300">
-                        Menjadi toko mainan anak terpercaya nomor satu di Indonesia yang menghadirkan kebahagiaan dan mendukung tumbuh kembang anak melalui produk berkualitas tinggi.
+                        Menjadi toko pilihan utama di Brebes yang menghadirkan kebahagiaan dan kesejahteraan bagi owner, karyawan, serta pelanggan melalui produk dan pelayanan terbaik.
                     </p>
                 </div>
                 
@@ -85,19 +85,19 @@
                     <ul class="text-gray-300 space-y-2">
                         <li class="flex items-start">
                             <span class="text-secondary-400 mr-2">✓</span>
-                            Menyediakan mainan berkualitas dengan harga terjangkau
+                            Memberikan pelayanan terbaik dan profesional.
                         </li>
                         <li class="flex items-start">
                             <span class="text-secondary-400 mr-2">✓</span>
-                            Memastikan setiap produk aman dan tersertifikasi
+                            Menyediakan produk yang lengkap dan berkualitas.
                         </li>
                         <li class="flex items-start">
                             <span class="text-secondary-400 mr-2">✓</span>
-                            Memberikan pelayanan pelanggan terbaik
+                            Meningkatkan penjualan secara berkelanjutan.
                         </li>
                         <li class="flex items-start">
                             <span class="text-secondary-400 mr-2">✓</span>
-                            Mengedukasi orang tua tentang mainan yang tepat
+                            Menciptakan kerja sama tim yang solid dan produktif.
                         </li>
                     </ul>
                 </div>
@@ -105,73 +105,67 @@
         </div>
     </section>
 
-    <!-- Values Section -->
+    <!-- Mascot Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-                    💎 Nilai-Nilai <span class="gradient-text">Kami</span>
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Prinsip yang kami pegang teguh dalam melayani pelanggan
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <span class="text-4xl">🛡️</span>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Mascot Image on Left -->
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary-100 to-secondary-100">
+                        @if(file_exists(public_path('images/mascot.jpg')))
+                            <img src="{{ asset('images/mascot.jpg') }}" alt="Maskot Happy Shop" class="w-full h-full object-cover">
+                        @elseif(file_exists(public_path('images/mascot.png')))
+                            <img src="{{ asset('images/mascot.png') }}" alt="Maskot Happy Shop" class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center">
+                                <span class="text-[12rem]">🧸</span>
+                            </div>
+                        @endif
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Keamanan</h3>
-                    <p class="text-gray-600">Semua produk telah teruji dan tersertifikasi SNI untuk keamanan anak</p>
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-200 rounded-full opacity-50 -z-10"></div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary-200 rounded-full opacity-50 -z-10"></div>
                 </div>
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-pink-100 to-pink-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <span class="text-4xl">⭐</span>
+                <!-- Mascot Description on Right -->
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
+                        🧸 Kenalan dengan <span class="gradient-text">Happy Bear</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-600">
+                        <p>
+                            <strong class="text-gray-900">Happy Bear</strong> adalah maskot resmi Happy Shop yang menemani setiap petualangan belanja kamu! Dengan senyuman hangatnya, Happy Bear selalu siap menyambut setiap pengunjung dengan penuh kebahagiaan.
+                        </p>
+                        <p>
+                            Happy Bear lahir dari mimpi untuk menciptakan teman bermain yang selalu ada untuk anak-anak Indonesia. Dia percaya bahwa setiap anak berhak mendapatkan mainan yang aman, berkualitas, dan pastinya menyenangkan!
+                        </p>
+                        <p>
+                            Sebagai sahabat setia Happy Shop, Happy Bear selalu memastikan bahwa setiap produk yang kami jual sudah melewati standar keamanan dan kualitas terbaik. Karena kebahagiaan si kecil adalah prioritas utama kami!
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Kualitas</h3>
-                    <p class="text-gray-600">Hanya menjual produk dari brand terpercaya dengan kualitas terbaik</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <span class="text-4xl">💰</span>
+                    
+                    <!-- Mascot Facts -->
+                    <div class="mt-8 p-6 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl">
+                        <h3 class="font-bold text-gray-900 mb-4">🌟 Fakta Seru tentang Happy Bear:</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-secondary-500 mr-2">💖</span>
+                                Warna favorit: Biru dan Pink (seperti logo Happy Shop!)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary-500 mr-2">🎈</span>
+                                Hobi: Bermain puzzle dan membangun lego
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary-500 mr-2">🍬</span>
+                                Makanan favorit: Es krim strawberry
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-secondary-500 mr-2">✨</span>
+                                Motto: "Bermain adalah belajar yang menyenangkan!"
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Harga Fair</h3>
-                    <p class="text-gray-600">Harga yang kompetitif dan transparan tanpa biaya tersembunyi</p>
-                </div>
-                
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <span class="text-4xl">💖</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pelayanan</h3>
-                    <p class="text-gray-600">Layanan pelanggan yang ramah dan responsif setiap saat</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-20 bg-gradient-to-br from-blue-50 via-white to-pink-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold gradient-text mb-2">500+</div>
-                    <p class="text-gray-600 font-medium">Produk Tersedia</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold gradient-text mb-2">10K+</div>
-                    <p class="text-gray-600 font-medium">Pelanggan Bahagia</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold gradient-text mb-2">50+</div>
-                    <p class="text-gray-600 font-medium">Brand Partner</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-5xl font-extrabold gradient-text mb-2">4.9</div>
-                    <p class="text-gray-600 font-medium">Rating Pelanggan</p>
                 </div>
             </div>
         </div>
