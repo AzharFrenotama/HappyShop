@@ -27,9 +27,21 @@
 
     <section class="py-12 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Mobile Filter Toggle Button -->
+            <div class="lg:hidden mb-4">
+                <button onclick="toggleMobileFilter()" class="w-full flex items-center justify-between px-5 py-3 bg-white rounded-2xl shadow-sm font-semibold text-gray-700 border border-gray-200">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+                        Filter & Pencarian
+                    </span>
+                    <svg id="filterChevron" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Sidebar -->
-                <aside class="lg:w-64 flex-shrink-0">
+                <aside id="mobileSidebar" class="lg:w-64 flex-shrink-0 hidden lg:block">
                     <!-- Search -->
                     <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
                         <h3 class="font-bold text-gray-900 mb-4">🔍 Cari Produk</h3>
@@ -144,4 +156,15 @@
             </div>
         </div>
     </section>
+
+@push('scripts')
+<script>
+    function toggleMobileFilter() {
+        const sidebar = document.getElementById('mobileSidebar');
+        const chevron = document.getElementById('filterChevron');
+        sidebar.classList.toggle('hidden');
+        chevron.classList.toggle('rotate-180');
+    }
+</script>
+@endpush
 @endsection

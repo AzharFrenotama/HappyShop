@@ -24,7 +24,7 @@
                 <h2 class="text-xl font-semibold text-gray-800 mb-2">Keranjang Anda Kosong</h2>
                 <p class="text-gray-600 mb-6">Yuk, mulai belanja mainan seru untuk si kecil!</p>
                 <a href="{{ route('products.index') }}" 
-                   class="inline-block bg-primary hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors">
+                   class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl">
                     Lihat Produk
                 </a>
             </div>
@@ -41,39 +41,42 @@
                         
                         <div id="cart-items-container">
                             @foreach($cartItems as $item)
-                                <div class="cart-item p-6 border-b border-gray-100 last:border-0" data-id="{{ $item->id }}">
-                                    <div class="flex items-center gap-4">
-                                        <!-- Product Image -->
-                                        <div class="w-24 h-24 flex-shrink-0">
-                                            @if($item->product->image)
-                                                <img src="{{ asset('storage/' . $item->product->image) }}" 
-                                                     alt="{{ $item->product->name }}"
-                                                     class="w-full h-full object-cover rounded-xl">
-                                            @else
-                                                <div class="w-full h-full bg-gray-200 rounded-xl flex items-center justify-center">
-                                                    <span class="text-3xl">🧸</span>
-                                                </div>
-                                            @endif
+                                <div class="cart-item p-4 sm:p-6 border-b border-gray-100 last:border-0" data-id="{{ $item->id }}">
+                                    <div class="flex flex-wrap gap-4">
+                                        <!-- Image + Info -->
+                                        <div class="flex gap-4 flex-1 min-w-0">
+                                            <!-- Product Image -->
+                                            <div class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+                                                @if($item->product->image)
+                                                    <img src="{{ asset('storage/' . $item->product->image) }}" 
+                                                         alt="{{ $item->product->name }}"
+                                                         class="w-full h-full object-cover rounded-xl">
+                                                @else
+                                                    <div class="w-full h-full bg-gray-200 rounded-xl flex items-center justify-center">
+                                                        <span class="text-3xl">🧸</span>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                            <!-- Product Info -->
+                                            <div class="flex-grow min-w-0">
+                                                <h3 class="font-semibold text-gray-800 truncate">
+                                                    <a href="{{ route('products.show', $item->product->slug) }}" 
+                                                       class="hover:text-primary transition-colors">
+                                                        {{ $item->product->name }}
+                                                    </a>
+                                                </h3>
+                                                <p class="text-sm text-gray-500 mb-1">{{ $item->product->category->name ?? 'Uncategorized' }}</p>
+                                                <p class="text-primary font-bold">Rp {{ number_format($item->product->price, 0, ',', '.') }}</p>
+                                                
+                                                @if($item->product->stock < 10)
+                                                    <p class="text-xs text-orange-600 mt-1">⚠️ Sisa {{ $item->product->stock }} stok!</p>
+                                                @endif
+                                            </div>
                                         </div>
 
-                                        <!-- Product Info -->
-                                        <div class="flex-grow">
-                                            <h3 class="font-semibold text-gray-800">
-                                                <a href="{{ route('products.show', $item->product->slug) }}" 
-                                                   class="hover:text-primary transition-colors">
-                                                    {{ $item->product->name }}
-                                                </a>
-                                            </h3>
-                                            <p class="text-sm text-gray-500 mb-2">{{ $item->product->category->name ?? 'Uncategorized' }}</p>
-                                            <p class="text-primary font-bold">Rp {{ number_format($item->product->price, 0, ',', '.') }}</p>
-                                            
-                                            @if($item->product->stock < 10)
-                                                <p class="text-xs text-orange-600 mt-1">⚠️ Sisa {{ $item->product->stock }} stok!</p>
-                                            @endif
-                                        </div>
-
-                                        <!-- Quantity & Actions -->
-                                        <div class="flex flex-col items-end gap-2">
+                                        <!-- Quantity & Actions - full width on mobile -->
+                                        <div class="flex items-center justify-between w-full sm:w-auto sm:flex-col sm:items-end gap-2">
                                             <div class="flex items-center gap-2">
                                                 <button onclick="updateQuantity({{ $item->id }}, {{ $item->quantity - 1 }})" 
                                                         class="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
@@ -84,7 +87,7 @@
                                                        value="{{ $item->quantity }}" 
                                                        min="1" 
                                                        max="{{ $item->product->stock }}"
-                                                       class="w-14 h-8 text-center border border-gray-200 rounded-lg text-sm qty-input"
+                                                       class="w-12 h-8 text-center border border-gray-200 rounded-lg text-sm qty-input"
                                                        data-id="{{ $item->id }}"
                                                        onchange="updateQuantity({{ $item->id }}, this.value)">
                                                 <button onclick="updateQuantity({{ $item->id }}, {{ $item->quantity + 1 }})" 
@@ -94,14 +97,15 @@
                                                 </button>
                                             </div>
                                             
-                                            <p class="text-sm font-semibold text-gray-700 item-subtotal">
-                                                Rp {{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}
-                                            </p>
-                                            
-                                            <button onclick="removeItem({{ $item->id }})" 
-                                                    class="text-red-500 hover:text-red-700 text-sm transition-colors">
-                                                Hapus
-                                            </button>
+                                            <div class="flex items-center gap-3 sm:flex-col sm:items-end">
+                                                <p class="text-sm font-semibold text-gray-700 item-subtotal">
+                                                    Rp {{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}
+                                                </p>
+                                                <button onclick="removeItem({{ $item->id }})" 
+                                                        class="text-red-500 hover:text-red-700 text-sm transition-colors">
+                                                    Hapus
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -138,7 +138,7 @@
                         @if($product->stock > 0)
                             <!-- Add to Cart Section -->
                             <div class="bg-gray-50 rounded-2xl p-6 mb-4">
-                                <div class="flex items-center gap-4">
+                                <div class="flex flex-wrap items-center gap-4">
                                     <label class="text-sm font-medium text-gray-700">Jumlah:</label>
                                     <div class="flex items-center gap-2">
                                         <button type="button" onclick="decreaseQty()" 
