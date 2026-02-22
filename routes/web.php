@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AIChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,5 @@ Route::delete('/keranjang/hapus/{cart}', [CartController::class, 'remove'])->nam
 Route::post('/keranjang/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::get('/keranjang/count', [CartController::class, 'count'])->name('cart.count');
 
+// AI Chat
+Route::post('/ai-chat', [AIChatController::class, 'chat'])->name('ai.chat');
