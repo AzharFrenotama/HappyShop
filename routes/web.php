@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PageController;
@@ -17,6 +18,19 @@ use App\Http\Controllers\AIChatController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Fallback static file serving for shared hosting without `php artisan storage:link`.
+Route::get('/storage/{path}', function (string $path) {
+	$disk = Storage::disk('public');
+
+	if (! $disk->exists($path)) {
+		abort(404);
+	}
+
+	$absolutePath = storage_path('app/public/' . ltrim($path, '/'));
+
+	return response()->file($absolutePath);
+})->where('path', '.*');
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');

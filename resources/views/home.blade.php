@@ -40,26 +40,18 @@
                 <div class="relative hidden lg:block">
                     <!-- Hero Image: ganti file public/images/hero.jpg -->
                     <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                        @if(file_exists(public_path('images/hero.jpg')))
-                            <img 
-                                src="{{ asset('images/hero.jpg') }}" 
-                                alt="Happy Shop"
-                                class="w-full h-full object-cover"
-                            >
-                        @elseif(file_exists(public_path('images/hero.png')))
-                            <img 
-                                src="{{ asset('images/hero.png') }}" 
-                                alt="Happy Shop"
-                                class="w-full h-full object-cover"
-                            >
-                        @else
-                            <div class="w-full h-full bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
-                                <div class="text-center p-8">
-                                    <span class="text-8xl">🧸</span>
-                                    <p class="text-2xl font-bold text-primary-600 mt-4">Mainan Berkualitas</p>
-                                </div>
+                        <img 
+                            src="{{ asset('images/hero.jpg') }}" 
+                            alt="Happy Shop"
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='{{ asset('images/hero.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';"
+                        >
+                        <div class="hidden w-full h-full bg-gradient-to-br from-primary-100 to-secondary-100 items-center justify-center">
+                            <div class="text-center p-8">
+                                <span class="text-8xl">🧸</span>
+                                <p class="text-2xl font-bold text-primary-600 mt-4">Mainan Berkualitas</p>
                             </div>
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>

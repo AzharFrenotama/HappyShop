@@ -46,17 +46,12 @@
                 <div class="relative">
                     {{-- Gambar About: taruh file di public/images/about.jpg atau about.png --}}
                     <div class="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-3xl overflow-hidden">
-                        @if(file_exists(public_path('images/about.jpg')))
-                            <img src="{{ asset('images/about.jpg') }}" alt="Tentang Happy Shop" class="w-full h-auto object-cover">
-                        @elseif(file_exists(public_path('images/about.png')))
-                            <img src="{{ asset('images/about.png') }}" alt="Tentang Happy Shop" class="w-full h-auto object-cover">
-                        @else
-                            <div class="p-8 text-center">
-                                <div class="text-8xl mb-4">🧸</div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Sejak 2020</h3>
-                                <p class="text-gray-600">Melayani keluarga Indonesia</p>
-                            </div>
-                        @endif
+                        <img src="{{ asset('images/about.jpg') }}" alt="Tentang Happy Shop" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='{{ asset('images/about.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';">
+                        <div class="hidden p-8 text-center">
+                            <div class="text-8xl mb-4">🧸</div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Sejak 2020</h3>
+                            <p class="text-gray-600">Melayani keluarga Indonesia</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,15 +107,10 @@
                 <!-- Mascot Image on Left -->
                 <div class="relative">
                     <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary-100 to-secondary-100">
-                        @if(file_exists(public_path('images/mascot.jpg')))
-                            <img src="{{ asset('images/mascot.jpg') }}" alt="Maskot Happy Shop" class="w-full h-full object-cover">
-                        @elseif(file_exists(public_path('images/mascot.png')))
-                            <img src="{{ asset('images/mascot.png') }}" alt="Maskot Happy Shop" class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center">
-                                <span class="text-[12rem]">🧸</span>
-                            </div>
-                        @endif
+                        <img src="{{ asset('images/mascot.jpg') }}" alt="Maskot Happy Shop" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='{{ asset('images/mascot.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';">
+                        <div class="hidden w-full h-full items-center justify-center">
+                            <span class="text-[12rem]">🧸</span>
+                        </div>
                     </div>
                     <!-- Decorative Elements -->
                     <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-200 rounded-full opacity-50 -z-10"></div>

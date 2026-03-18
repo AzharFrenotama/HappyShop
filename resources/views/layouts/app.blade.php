@@ -9,9 +9,7 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
-    @if(file_exists(public_path('images/logo.png')))
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
-    @endif
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,11 +119,8 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3">
-                    @if(file_exists(public_path('images/logo.png')))
-                        <img src="{{ asset('images/logo.png') }}" alt="Happy Shop" class="h-16 w-auto">
-                    @else
-                        <img src="{{ asset('images/logo.svg') }}" alt="Happy Shop" class="h-14 w-auto">
-                    @endif
+                    <img src="{{ asset('images/logo.svg') }}" alt="Happy Shop" class="h-14 w-auto" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');">
+                    <span class="hidden text-3xl">🧸</span>
                     <span class="text-2xl font-bold gradient-text hidden sm:block">Happy Shop</span>
                 </a>
                 
@@ -206,11 +201,8 @@
                 <!-- Brand -->
                 <div class="lg:col-span-1">
                     <a href="{{ route('home') }}" class="flex items-center space-x-3 mb-6">
-                        @if(file_exists(public_path('images/logo.png')))
-                            <img src="{{ asset('images/logo.png') }}" alt="Happy Shop" class="h-16 w-auto brightness-0 invert">
-                        @else
-                            <span class="text-3xl">🧸</span>
-                        @endif
+                        <img src="{{ asset('images/logo.svg') }}" alt="Happy Shop" class="h-14 w-auto" onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');">
+                        <span class="hidden text-3xl">🧸</span>
                         <span class="text-2xl font-bold">Happy Shop</span>
                     </a>
                     <p class="text-gray-300 mb-6">
