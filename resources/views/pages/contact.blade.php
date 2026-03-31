@@ -14,10 +14,10 @@
                     Hubungi Kami
                 </span>
                 <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-                    Ada Pertanyaan? <span class="gradient-text">Hubungi Kami!</span>
+                    {{ $contactPage->title ?? 'Ada Pertanyaan? Hubungi Kami!' }}
                 </h1>
                 <p class="text-lg text-gray-600">
-                    Tim kami siap membantu Anda menemukan mainan terbaik untuk si kecil. Jangan ragu untuk menghubungi kami!
+                    {{ $contactPage->subtitle ?? 'Tim kami siap membantu Anda menemukan mainan terbaik untuk si kecil. Jangan ragu untuk menghubungi kami!' }}
                 </p>
             </div>
         </div>
@@ -34,7 +34,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">WhatsApp</h3>
                     <p class="text-gray-600 mb-4">Respon cepat dalam hitungan menit</p>
-                    <span class="text-green-600 font-bold text-lg">+62 852 0106 0671</span>
+                    <span class="text-green-600 font-bold text-lg">{{ $contactPage->phone ?? '+62 852 0106 0671' }}</span>
                 </div>
                 
                 <!-- Email -->
@@ -44,7 +44,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Email</h3>
                     <p class="text-gray-600 mb-4">Kirim pertanyaan kapan saja</p>
-                    <span class="text-primary-600 font-bold text-lg"> brebeshappyshop@gmail.com</span>
+                    <span class="text-primary-600 font-bold text-lg">{{ $contactPage->email ?? 'brebeshappyshop@gmail.com' }}</span>
                 </div>
                 
                 <!-- Location -->
@@ -54,7 +54,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Lokasi</h3>
                     <p class="text-gray-600 mb-4">Kunjungi toko kami</p>
-                    <span class="text-secondary-600 font-bold">Jl. KH. Ahmad Dahlan<br>Kabupaten Brebes</span>
+                    <span class="text-secondary-600 font-bold">{{ $contactPage->address ?? 'Jl. KH. Ahmad Dahlan, Kabupaten Brebes' }}</span>
                 </div>
             </div>
             
@@ -63,7 +63,7 @@
                 <h3 class="text-2xl font-bold text-gray-900 text-center mb-6">Jam Operasional</h3>
                 <div class="text-center p-6 bg-white rounded-2xl">
                     <p class="font-semibold text-gray-900 mb-2">Setiap Hari</p>
-                    <p class="text-primary-600 font-bold text-xl">08.00 - 20.00 WIB</p>
+                    <p class="text-primary-600 font-bold text-xl">{{ $contactPage->hours ?? '08.00 - 20.00 WIB' }}</p>
                 </div>
             </div>
         </div>

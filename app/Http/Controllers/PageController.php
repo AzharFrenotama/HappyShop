@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Page;
 
 class PageController extends Controller
 {
     public function about()
     {
-        return view('pages.about');
+        $aboutPage = Page::getBySlug('about');
+        return view('pages.about', compact('aboutPage'));
     }
 
     public function contact()
     {
-        return view('pages.contact');
+        $contactPage = Page::getBySlug('contact');
+        return view('pages.contact', compact('contactPage'));
     }
 }

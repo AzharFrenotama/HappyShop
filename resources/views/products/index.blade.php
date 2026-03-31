@@ -67,15 +67,19 @@
                                     <span class="font-medium">Semua Kategori</span>
                                 </a>
                             </li>
-                            @foreach($categories as $category)
-                                <li>
-                                    <a href="{{ route('products.index', array_merge(request()->except('category'), ['category' => $category->slug])) }}" class="flex items-center justify-between py-2 px-3 rounded-lg transition-colors {{ request('category') == $category->slug ? 'bg-primary-100 text-primary-700' : 'hover:bg-gray-100' }}">
-                                        <span class="font-medium">
-                                            {{ $category->icon }} {{ $category->name }}
-                                        </span>
-                                    </a>
-                                </li>
-                            @endforeach
+                            @forelse($categories as $category)
+                                @if($category->name)
+                                    <li>
+                                        <a href="{{ route('products.index', array_merge(request()->except('category'), ['category' => $category->slug])) }}" class="flex items-center justify-between py-2 px-3 rounded-lg transition-colors {{ request('category') == $category->slug ? 'bg-primary-100 text-primary-700' : 'hover:bg-gray-100' }}">
+                                            <span class="font-medium">
+                                                {{ $category->icon }} {{ $category->name }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @empty
+                                <li class="text-gray-500 text-sm py-2">Tidak ada kategori</li>
+                            @endforelse
                         </ul>
                     </div>
                     

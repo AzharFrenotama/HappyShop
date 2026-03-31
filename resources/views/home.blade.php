@@ -18,14 +18,18 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
                     <span class="inline-block px-4 py-2 bg-secondary-100 text-secondary-600 rounded-full text-sm font-semibold mb-6">
-                        🎈 Selamat Datang di Toko Mainan Anak
+                        🎈 {{ $homePage->subtitle ?? 'Selamat Datang di Toko Mainan Anak' }}
                     </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                        Temukan <span class="gradient-text">Kebahagiaan</span> untuk Si Kecil
+                        {{ $homePage->title ?? 'Temukan Kebahagiaan untuk Si Kecil' }}
                     </h1>
-                    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                        Koleksi mainan berkualitas yang aman dan edukatif untuk perkembangan anak Anda. Dari boneka lucu hingga puzzle menarik!
-                    </p>
+                    <div class="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                        @if($homePage->content)
+                            {!! $homePage->content !!}
+                        @else
+                            <p>Koleksi mainan berkualitas yang aman dan edukatif untuk perkembangan anak Anda. Dari boneka lucu hingga puzzle menarik!</p>
+                        @endif
+                    </div>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="{{ route('products.index') }}" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-full hover:from-primary-600 hover:to-primary-700 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
@@ -41,8 +45,8 @@
                     <!-- Hero Image: ganti file public/images/hero.jpg -->
                     <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                         <img 
-                            src="{{ asset('images/hero.jpg') }}" 
-                            alt="Happy Shop"
+                            src="{{ $homePage->image_url ?? asset('images/hero.jpg') }}" 
+                            alt="{{ $homePage->image_alt ?? 'Happy Shop' }}"
                             class="w-full h-full object-cover"
                             onerror="this.onerror=null;this.src='{{ asset('images/hero.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';"
                         >

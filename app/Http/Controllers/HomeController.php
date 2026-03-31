@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $homePage = Page::getBySlug('home');
+
         $featuredProducts = Product::with('category')
             ->active()
             ->featured()
@@ -35,6 +37,7 @@ class HomeController extends Controller
             ->get();
 
         return view('home', compact(
+            'homePage',
             'featuredProducts',
             'bestsellerProducts',
             'categories',

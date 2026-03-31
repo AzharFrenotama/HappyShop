@@ -14,10 +14,10 @@
                     Tentang Kami
                 </span>
                 <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-                    Selamat Datang di <span class="gradient-text">Happy Shop</span>
+                    {{ $aboutPage->title ?? 'Selamat Datang di Happy Shop' }}
                 </h1>
                 <p class="text-lg text-gray-600">
-                    Toko mainan anak terpercaya yang berkomitmen menghadirkan kebahagiaan dan mendukung perkembangan si kecil melalui mainan berkualitas.
+                    {{ $aboutPage->subtitle ?? 'Toko mainan anak terpercaya yang berkomitmen menghadirkan kebahagiaan dan mendukung perkembangan si kecil melalui mainan berkualitas.' }}
                 </p>
             </div>
         </div>
@@ -32,21 +32,25 @@
                         📖 Cerita <span class="gradient-text">Kami</span>
                     </h2>
                     <div class="space-y-4 text-gray-600">
-                        <p>
-                            <strong class="text-gray-900">Happy Shop</strong> hadir di brebes tgl 6 januari 2016, dan Alhamdulillah sampai saat ini masih memenuhi pelanggan kami untuk yang memerlukan pernak pernik Ultah, mainan anak, boneka, aneka buket dan asesoris lainnya
-                        </p>
-                        <p>
-                            Alhamdulillah, hingga saat ini Happy Shop tetap dipercaya oleh pelanggan setia kami. Kami terus berusaha memenuhi kebutuhan berbagai pernak-pernik ulang tahun, mulai dari dekorasi, balon, lilin, hingga perlengkapan pesta lainnya. Selain itu, kami juga menyediakan beragam mainan anak, boneka lucu, aneka buket untuk berbagai momen spesial, serta aksesori menarik lainnya.
-                        </p>
-                        <p>
-                            Dengan pelayanan yang ramah dan koleksi produk yang selalu diperbarui mengikuti tren, Happy Shop siap menjadi pilihan utama Anda untuk melengkapi setiap momen bahagia bersama keluarga dan orang-orang tercinta.
-                        </p>
+                        @if($aboutPage->content)
+                            {!! $aboutPage->content !!}
+                        @else
+                            <p>
+                                <strong class="text-gray-900">Happy Shop</strong> hadir di brebes tgl 6 januari 2016, dan Alhamdulillah sampai saat ini masih memenuhi pelanggan kami untuk yang memerlukan pernak pernik Ultah, mainan anak, boneka, aneka buket dan asesoris lainnya
+                            </p>
+                            <p>
+                                Alhamdulillah, hingga saat ini Happy Shop tetap dipercaya oleh pelanggan setia kami. Kami terus berusaha memenuhi kebutuhan berbagai pernak-pernik ulang tahun, mulai dari dekorasi, balon, lilin, hingga perlengkapan pesta lainnya. Selain itu, kami juga menyediakan beragam mainan anak, boneka lucu, aneka buket untuk berbagai momen spesial, serta aksesori menarik lainnya.
+                            </p>
+                            <p>
+                                Dengan pelayanan yang ramah dan koleksi produk yang selalu diperbarui mengikuti tren, Happy Shop siap menjadi pilihan utama Anda untuk melengkapi setiap momen bahagia bersama keluarga dan orang-orang tercinta.
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <div class="relative">
                     {{-- Gambar About: taruh file di public/images/about.jpg atau about.png --}}
                     <div class="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-3xl overflow-hidden">
-                        <img src="{{ asset('images/about.jpg') }}" alt="Tentang Happy Shop" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='{{ asset('images/about.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';">
+                        <img src="{{ $aboutPage->image_url ?? asset('images/about.jpg') }}" alt="{{ $aboutPage->image_alt ?? 'Tentang Happy Shop' }}" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='{{ asset('images/about.png') }}';if(this.dataset.fallbackDone){this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');}this.dataset.fallbackDone='1';">
                         <div class="hidden p-8 text-center">
                             <div class="text-8xl mb-4">🧸</div>
                             <h3 class="text-2xl font-bold text-gray-900 mb-2">Sejak 2020</h3>

@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
-use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -111,10 +110,16 @@ class ProductResource extends Resource
                                     ->label('Foto Produk')
                                     ->image()
                                     ->imageEditor()
+                                    ->disk('public')
                                     ->directory('products')
                                     ->visibility('public')
+                                    ->preserveFilenames()
                                     ->maxSize(2048)
-                                    ->helperText('Maksimal 2MB'),
+                                    ->deletable(true)
+                                    ->downloadable()
+                                    ->previewable()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+                                    ->helperText('Maksimal 2MB (JPG, PNG, WebP, GIF). Klik X pada gambar untuk menghapus.'),
                             ]),
 
                         Forms\Components\Section::make('Harga & Stok')
